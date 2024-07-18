@@ -1,6 +1,13 @@
-/*
-npx sequelize-cli model:create --name "User" --attributes email:string,password:string,role:varchar
+const express = require('express')
+const app = express()
+const port = 3000
+const router = require('./routers/index')
 
-npx sequelize-cli model:create --name "Account" --attributes name:string,email:string,role:varchar,education:string,position:string,StoreId:integer
+app.set('view engine', 'ejs')
+app.use(express.urlencoded({ extended: true }));
 
-*/
+app.use('/', router)
+
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`)
+})

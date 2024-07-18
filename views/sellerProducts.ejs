@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categories</title>
+
+    <!-- Script -->
+    <%- include('./partials/_script') %>
+</head>
+<body>
+    <!-- Navbar -->
+    <%- include('./partials/_navbarSeller') %>
+
+    <!-- Title -->
+    <div class="my-10 text-4xl font-bold text-center container mx-auto">
+        <h1><%= title %></h1>
+    </div>
+
+    <!-- Delete Notification -->
+    <% if (deleted) { %>
+        <div class="my-5 text-xl font-bold text-center container mx-auto">
+            <p style="color: red;">Product <%= deleted %> has been removed</p>
+        </div>
+    <% } %>
+
+    <!-- Products Table -->
+    <div class="container mx-auto mb-10">
+        <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+            <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 text-center">
+                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-stone-300">
+                    <tr>
+                        <% ["Image", "Name", "Description", "Category", "Stock", "Price", "Action"].forEach(el => { %>
+                            <th scope="col" class="px-6 py-3">
+                                <%= el %>
+                            </th>
+                        <% }); %>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% products.forEach(el => { %>
+                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-900">
+                            <td class="px-6 py-4">
+                                <img src="<%= el.imageURL %>" alt="productImage">
+                            </td>
+                            <td class="px-6 py-4">
+                                <%= el.productName %>
+                            </td>
+                            <td class="px-6 py-4 text-justify">
+                                <%= el.description %>
+                            </td>
+                            <td class="px-6 py-4 text-justify">
+                                <%= el.Category.categoryName %>
+                            </td>
+                            <td class="px-6 py-4">
+                                <%= el.stock %>
+                            </td>
+                            <td class="px-6 py-4">
+                                <%= rupiahFormat(el.price) %>
+                            </td>
+                            <td>
+                                <div class="p-4 flex flex-wrap gap-4 justify-center">
+                                    <a href="/seller/product/<%= el.id %>/edit">
+                                        <button class="text-amber-400 hover:text-white border border-amber-400 hover:bg-amber-600 focus:ring-4 focus:outline-none focus:ring-amber-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:border-amber-300 dark:text-amber-300 dark:hover:text-black dark:hover:bg-amber-500 dark:focus:ring-amber-900 hover:scale-110">Edit</button>
+                                    </a>
+                                    <a href="/seller/product/<%= el.id %>/delete">
+                                        <button class="text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900 hover:scale-110">Delete</button>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <!-- Add Product Button -->
+    <div class="container text-center mx-auto mb-20">
+        <a href="/seller/product/add" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Add Product</a>
+    </div>
+
+    <!-- Footer -->
+     <%- include('./partials/_footer') %>
+
+</body>
+</html>

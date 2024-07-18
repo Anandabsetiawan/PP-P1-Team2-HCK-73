@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Product</title>
+
+    <!-- Script -->
+    <%- include('./partials/_script') %>
+</head>
+<body>
+    <!-- Navbar -->
+    <%- include('./partials/_navbarSeller') %>
+
+    <!-- Title -->
+    <div class="mt-10 text-4xl font-bold text-center container mx-auto">
+        <h1><%= title %></h1>
+    </div>
+
+    <!-- Edit Product Form -->
+    <section>
+        <div class="py-4 px-4 mx-auto max-w-2xl lg:py-16">
+            <form method="post" action="/seller/product/<%= product.id %>/edit">
+                <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
+                    <!-- Product Name -->
+                    <div class="sm:col-span-2">
+                        <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Product Name</label>
+                        <input type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Product name" name="productName" value="<%= product.productName %>">
+                        <div>
+                            <% if (errors) { %>
+                                <p class="text-red-600 ps-3">
+                                    <%= errors.split(",").find(el => el.includes("product name")) %>
+                                </p>
+                            <% } %>
+                        </div>
+                    </div>
+
+                    <!-- image URL -->
+                    <div class="w-full">
+                        <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Image URL</label>
+                        <input type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="URL" name="imageURL" value="<%= product.imageURL %>">
+                        <div>
+                            <% if (errors) { %>
+                                <p class="text-red-600 ps-3">
+                                    <%= errors.split(",").find(el => el.includes("imageURL")) %>
+                                </p>
+                            <% } %>
+                        </div>
+                    </div>
+
+                    <!-- Category -->
+                    <div>
+                        <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Category</label>
+                        <select class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" name="CategoryId">
+                            <% categories.forEach(el => { %>
+                                <% if (el.id === product.CategoryId) { %>
+                                    <option selected value="<%= el.id %>"><%= el.categoryName %></option>
+                                <% } else { %>
+                                    <option value="<%= el.id %>"><%= el.categoryName %></option>
+                                <% } %>
+                            <% }); %>
+                        </select>
+                        <div>
+                            <% if (errors) { %>
+                                <p class="text-red-600 ps-3">
+                                    <%= errors.split(",").find(el => el.includes("category")) %>
+                                </p>
+                            <% } %>
+                        </div>
+                    </div>
+
+                    <!-- Price -->
+                    <div class="w-full">
+                        <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Price</label>
+                        <input type="number" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Rp 500.000,00" name="price" value="<%= product.price %>">
+                        <div>
+                            <% if (errors) { %>
+                                <p class="text-red-600 ps-3">
+                                    <%= errors.split(",").find(el => el.includes("price")) %>
+                                </p>
+                            <% } %>
+                        </div>
+                    </div>
+
+                    <!-- Stock -->
+                    <div>
+                        <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Stock</label>
+                        <input type="number" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="12" name="stock" value="<%= product.stock %>">
+                        <div>
+                            <% if (errors) { %>
+                                <p class="text-red-600 ps-3">
+                                    <%= errors.split(",").find(el => el.includes("stock")) %>
+                                </p>
+                            <% } %>
+                        </div>
+                    </div>
+
+                    <!-- Description -->
+                    <div class="sm:col-span-2">
+                        <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Description</label>
+                        <textarea rows="8" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Your product description here" name="description"><%= product.description %></textarea>
+                    </div>
+                    <div>
+                        <% if (errors) { %>
+                            <p class="text-red-600 ps-3">
+                                <%= errors.split(",").find(el => el.includes("description")) %>
+                            </p>
+                        <% } %>
+                    </div>
+                </div>
+                <!-- Add Button -->
+                <div class="mt-4 text-center">
+                    <button type="submit" class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mb-2">
+                        Confirm
+                    </button>
+                </div>
+            </form>
+        </div>
+      </section>
+
+    <!-- Footer -->
+     <%- include('./partials/_footer') %>
+
+</body>
+</html>
