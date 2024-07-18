@@ -2,7 +2,11 @@
   "development": {
     "username": "postgres",
     "password": "postgres",
+<<<<<<< HEAD
     "database": "test_db",
+=======
+    "database": "bligua-db",
+>>>>>>> 5e1d0dfcb0ef9c562e9b2e82234d06f27daff35f
     "host": "localhost",
     "dialect": "postgres"
   },

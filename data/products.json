@@ -93,6 +93,12 @@
         "imageURL": "https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full//catalog-image/96/MTA-138373134/no-brand_no-brand_full02.jpg",
         "stock": 45,
         "price": 245000,
+<<<<<<< HEAD
         "CategoryId":4
     }
 ]
+=======
+        "CategoryId": 4
+    }
+  ]
+>>>>>>> 5e1d0dfcb0ef9c562e9b2e82234d06f27daff35f
