@@ -1,16 +1,53 @@
 const express = require('express')
 const router = express.Router()
 const Controller = require('../controllers/controller')
+const UserController = require('../controllers/usercontroller')
 
 const buyer = require('./buyer')
 const seller = require('./seller')
 
-router.use('/buyer', buyer)
-router.use('/seller', seller)
+// get /register
+router.get('/', UserController.homepage)
+router.get('/register', UserController.registerForm)
+// post /register
+router.post('/register', UserController.postRegister)
+// get /login
+router.get('/login', UserController.loginForm)
+// post /login
+router.post('/login', UserController.postLogin)
 
-router.get('/', Controller.home)
-router.get('/categories', Controller.allCategories)
-router.get('/categories/:CategoryId', Controller.sortByCategory)
-router.get('/product/:id', Controller.productDetail)
+router.use(function (req, res, next) {
+    if (!req.session.UserId) {
+        const error = "Please register before proceed"
+        return res.redirect(`/login?errors=${error}`)
+    }else{
+        next()       
+    }     
+})
+
+const buyerSession = (function (req, res, next) {
+    if (req.session.UserId && req.session.role !== "buyer") {
+        const error = "Please Enter Valid Account"
+        return res.redirect(`/login?errors=${error}`)
+    }else{
+        next()       
+    }
+}) 
+
+const sellerSession = (function (req, res, next) {
+    if (req.session.UserId && req.session.role !== "seller") {
+        const error = "Please Enter Valid Account"
+        return res.redirect(`/login?errors=${error}`)
+    }else{
+        next()       
+    }
+})
+
+router.use('/buyer', buyerSession, buyer)
+router.use('/seller', sellerSession, seller)
+
+// router.get('/product/:id', Controller.productDetail)
+
+router.get('/logout', UserController.logOut)
 
 module.exports = router

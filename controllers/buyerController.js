@@ -1,9 +1,55 @@
-const { Product, Category } = require("../models")
+const { Product, Category, AccountProduct, Account } = require("../models")
 const { Op } = require("sequelize")
 const rupiahFormat = require("../helpers/rupiahFormat")
 const qr = require('qrcode')
 
 class BuyerController {
+    static async home(req, res) {
+        try {
+            const { search } = req.query
+            
+            let products = await Product.searchProduct(search)
+
+            let categories = await Category.findAll()
+
+            res.render('homepage', { title: 'Homepage', products, categories, rupiahFormat })
+
+        } catch (error) {
+            res.send(error)
+        }
+    }
+
+    static async allCategories(req, res) {
+        try {
+            let products = await Product.findAll()
+            let categories = await Category.findAll()
+
+            res.render('allCategories', { title: 'All  Products', products, categories, rupiahFormat })
+
+        } catch (error) {
+            res.send(error)
+        }
+    }
+
+    static async sortByCategory(req, res) {
+        try {
+            const { CategoryId } = req.params
+
+            let category = await Category.findByPk(+CategoryId, {
+                include: {
+                    model: Product
+                }
+            })
+
+            let categories = await Category.findAll()
+
+            res.render('sortByCategory', { title: `${category.categoryName}`, category, categories, rupiahFormat })
+
+        } catch (error) {
+            res.send(error)
+        }
+    }
+
     static async buyProduct(req, res) {
         try {
             const { id } = req.params
@@ -39,7 +85,7 @@ class BuyerController {
             let findProduct = await Product.findByPk(+id)
             await findProduct.decrement('stock', { by: 1 })
 
-            res.redirect(`/`)
+            res.redirect(`/buyer`)
 
         } catch (error) {
             res.send(error)
