@@ -1,5 +1,4 @@
 'use strict';
-const { name } = require('ejs');
 const {
   Model
 } = require('sequelize');
@@ -27,10 +26,10 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       validate: {
         notNull: {
-          msg: "name is required"
+          msg: "username is required"
         },
         notEmpty: {
-          msg: "name is required"
+          msg: "username is required"
         }
       }
     },
@@ -47,7 +46,7 @@ module.exports = (sequelize, DataTypes) => {
       }
     },
     phoneNumber: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false,
       validate: {
         notNull: {

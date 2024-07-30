@@ -22,6 +22,7 @@ class UserController {
     static async postRegister(req, res) {
         try {
             const { name, email, password, address, phoneNumber, role } = req.body
+            console.log(req.body);
 
             let new_user = await User.create({ email, password, role })
 
@@ -52,6 +53,14 @@ class UserController {
     static async postLogin(req, res) {
         try {
             const { email, password } = req.body
+
+            if(email.length === 0) {
+                throw {name: "required-email"}
+            }
+
+            if(password.length === 0) {
+                throw {name: "required-password"}
+            }
             
             let findUser = await User.findOne({ where: { email } })
             
@@ -75,15 +84,25 @@ class UserController {
                     }
 
                 } else {
-                    const error = "invalid Email / Password"
-                    return res.redirect(`/login?errors=${error}`)
+                    throw {name: "invalid-user"}
                 }
             }else{
-                const error = "invalid Email / Password"
-                return res.redirect(`/login?errors=${error}`)
+                throw {name: "invalid-user"}
             }
         } catch (error) {
-            if(error.name === "SequelizeValidationError" || error.name === "SequelizeUniqueConstraintError") {
+            if(error.name === "required-email") {
+                error = "email is required";
+                res.redirect(`/login?errors=${error}`)
+            }
+            else if(error.name === "required-password") {
+                error = "password is required";
+                res.redirect(`/login?errors=${error}`)
+            }
+            else if(error.name === "invalid-user") {
+                error = "invalid email / password";
+                res.redirect(`/login?errors=${error}`)
+            }
+            else if(error.name === "SequelizeValidationError" || error.name === "SequelizeUniqueConstraintError") {
                 error = error.errors.map(el => {
                     return el.message
                 })

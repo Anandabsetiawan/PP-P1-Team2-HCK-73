@@ -82,10 +82,14 @@ class BuyerController {
     static async decreaseStock(req, res) {
         try {
             const { id } = req.params
-            let findProduct = await Product.findByPk(+id)
+            let findProduct = await Product.findByPk(+id, {
+                include: {
+                    model: Account
+                }
+            })
             await findProduct.decrement('stock', { by: 1 })
 
-            res.redirect(`/buyer`)
+            res.render(`successBuyProduct`, { title: 'Success Buy Product', findProduct})
 
         } catch (error) {
             res.send(error)

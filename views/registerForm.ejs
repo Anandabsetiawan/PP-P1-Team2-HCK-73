@@ -6,61 +6,219 @@
     <title>Register</title>
       <!-- Script -->
       <%- include('./partials/_script') %>
+      <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+              extend: {
+                colors: {
+                  primary: { "50": "#eff6ff", "100": "#dbeafe", "200": "#bfdbfe", "300": "#93c5fd", "400": "#60a5fa", "500": "#3b82f6", "600": "#2563eb", "700": "#1d4ed8", "800": "#1e40af", "900": "#1e3a8a", "950": "#172554" }
+                }
+              },
+              fontFamily: {
+                'body': [
+                  'Inter',
+                  'ui-sans-serif',
+                  'system-ui',
+                  '-apple-system',
+                  'system-ui',
+                  'Segoe UI',
+                  'Roboto',
+                  'Helvetica Neue',
+                  'Arial',
+                  'Noto Sans',
+                  'sans-serif',
+                  'Apple Color Emoji',
+                  'Segoe UI Emoji',
+                  'Segoe UI Symbol',
+                  'Noto Color Emoji'
+                ],
+                'sans': [
+                  'Inter',
+                  'ui-sans-serif',
+                  'system-ui',
+                  '-apple-system',
+                  'system-ui',
+                  'Segoe UI',
+                  'Roboto',
+                  'Helvetica Neue',
+                  'Arial',
+                  'Noto Sans',
+                  'sans-serif',
+                  'Apple Color Emoji',
+                  'Segoe UI Emoji',
+                  'Segoe UI Symbol',
+                  'Noto Color Emoji'
+                ]
+              }
+            }
+          }
+      </script>
 </head>
-<body>
-    <!-- Title -->
-    <div class="my-10 text-4xl font-bold text-center container mx-auto">
-      <h1>Register Account</h1>
-    </div>
+<body class="bg-gray-100">
+    <!-- Register Form -->
+    <section class="py-5">
+      <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto lg:py-0">
+        <img class="flex items-center mb-2 text-2xl font-semibold text-gray-900 w-1/4"
+          src="https://i.imgur.com/onv9Nzc.png" alt="logo">
+        <div
+          class="w-full bg-white rounded-lg shadow md:mt-0 sm:max-w-md xl:p-0">
+          <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
+            <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
+              Create an account
+            </h1>
+            <form class="space-y-4 md:space-y-6" method="post" action="/register">
+              <!-- username -->
+              <div>
+                <!-- if error -->
+                <% if (errors) { %>
+                  <% if (errors.split(",").find(el=> el.includes("username is required"))) { %>
+                    <div>
+                      <label for="name" class="block mb-2 text-sm font-medium text-red-700">Your username</label>
+                      <input type="text" name="name" id="name"
+                        class="bg-red-50 border border-red-500 text-red-900 placeholder-red-700 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5"
+                        placeholder="username123">
+                        <p class="mt-2 text-sm text-red-600 font-medium">
+                          <%= errors %>
+                        </p>
+                    </div>
+                  <% } else { %>
+                    <div>
+                      <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Your username</label>
+                      <input type="text" name="name" id="name"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                        placeholder="username123">
+                    </div>
+                  <% } %>
+                <% } else { %>
+                  <div>
+                    <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Your username</label>
+                    <input type="text" name="name" id="name"
+                      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                      placeholder="username123">
+                  </div>
+                <% } %>
+              </div>
+              <!-- email -->
+              <div>
+                <!-- if error -->
+                <% if (errors) { %>
+                  <% if (errors.split(",").find(el=> el.includes("email"))) { %>
+                    <div>
+                      <label for="email" class="block mb-2 text-sm font-medium text-red-700">Your email</label>
+                      <input type="email" name="email" id="email"
+                        class="bg-red-50 border border-red-500 text-red-900 placeholder-red-700 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5"
+                        placeholder="name@company.com">
+                        <p class="mt-2 text-sm text-red-600 font-medium">
+                          <%= errors.split(",").find(el=> el.includes("email")) %>
+                        </p>
+                    </div>
+                  <% } else { %>
+                    <div>
+                      <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Your email</label>
+                      <input type="email" name="email" id="email"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                        placeholder="name@company.com">
+                    </div>
+                  <% } %>
+                <% } else { %>
+                  <div>
+                    <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Your email</label>
+                    <input type="email" name="email" id="email"
+                      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                      placeholder="name@company.com">
+                  </div>
+                <% } %>
+              </div>
+              <!-- password -->
+              <div>
+                <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Password</label>
+                <input type="password" name="password" id="password" placeholder="••••••••"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5">
+                  <!-- if error -->
+                  <% if (errors) { %>
+                    <p class="mt-2 text-sm text-red-600 font-medium">
+                      <%= errors.split(",").find(el=> el.includes("password")) %>
+                    </p>
+                  <% } %>
+              </div>
+              <!-- address -->
+              <div>
+                <label for="address" class="block mb-2 text-sm font-medium text-gray-900">Your address</label>
+                <input type="text" name="address" id="address" placeholder="123 Main St, Apt/Unit, City Name"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5">
+                  <!-- if error -->
+                  <% if (errors) { %>
+                    <p class="mt-2 text-sm text-red-600 font-medium">
+                      <%= errors.split(",").find(el=> el.includes("address")) %>
+                    </p>
+                  <% } %>
+                  
+              </div>
+              <!-- phone number -->
+              <div>
+                <label for="phoneNumber" class="block mb-2 text-sm font-medium text-gray-900">Your phone number</label>
+                <input type="tel" name="phoneNumber" id="phoneNumber" placeholder="08xxxxxxxxxx"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5">
+                  <!-- if error -->
+                  <% if (errors) { %>
+                    <p class="mt-2 text-sm text-red-600 font-medium">
+                      <%= errors.split(",").find(el=> el.includes("phone number")) %>
+                    </p>
+                    <% } %>
+              </div>
+              <!-- Role -->
+              <div>
+                <label class="block mb-2 text-sm font-medium text-gray-900">Role</label>
+                <div class="flex items-center ps-4 border border-gray-200 rounded">
+                  <input id="buyer" type="radio" value="buyer" name="role"
+                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500">
+                  <label for="buyer" class="py-4 ms-2 text-sm font-medium text-gray-900">Buyer</label>
+                </div>
+                <div class="flex items-center ps-4 border border-gray-200 rounded">
+                  <input id="seller" type="radio" value="seller" name="role"
+                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500">
+                  <label for="seller" class="py-4 ms-2 text-sm font-medium text-gray-900">Seller</label>
+                </div>
+                <!-- if error -->
+                <% if (errors) { %>
+                  <p class="mt-2 text-sm text-red-600 font-medium">
+                    <%= errors.split(",").find(el=> el.includes("role")) %>
+                  </p>
+                  <% } %>
+              </div>
+              <!-- Checkbox -->
+              <div class="flex items-start">
+                <div class="flex items-center h-5">
+                  <input id="terms" aria-describedby="terms" type="checkbox"
+                    class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300">
+                </div>
+                <div class="ml-3 text-sm">
+                  <label for="terms" class="font-light text-gray-500">I accept the <a
+                      class="font-medium text-primary-600 hover:underline" href="#">Terms and
+                      Conditions</a></label>
+                </div>
+              </div>
+              <button type="submit"
+                class="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Create
+                an account</button>
+              <p class="text-sm font-light text-gray-500">
+                Already have an account? <a href="/login"
+                  class="font-medium text-primary-600 hover:underline">Login here</a>
+              </p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- Error Message -->
     <div class="container my-5 mx-auto text-center">
       <% if (errors) { %>
         <p class="text-red-600 ps-3">
-            <%= errors %>
+          <%= errors %>
         </p>
-      <% } %>
-    </div>
-
-    <!-- Register Form-->
-    <div class="container mx-auto my-10">
-      <form method="post" action="/register" class="max-w-sm mx-auto">
-        <div class="mb-5">
-          <label for="userName" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">User Name</label>
-          <input name="name" type="text" id="userName" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" placeholder="User name"/>
-        </div>
-        
-        <div class="mb-5">
-          <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Email</label>
-          <input name="email" type="email" id="email" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" placeholder="email@email.com"/>
-        </div>
-        <div class="mb-5">
-          <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Password</label>
-          <input name="password" type="text" id="password" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"/>
-        </div>
-        <div class="mb-5">
-          <label for="Address" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Address</label>
-          <input name="address" type="text" id="Address" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" placeholder="Alamat"/>
-        </div>
-        <div class="mb-5">
-          <label for="Phone Number" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Phone Number</label>
-          <input name="phoneNumber" type="tel" id="Phone Number" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"  placeholder="08xxxxxxx"/>
-        </div>
-        <div class="my-5 items-center mx-auto">
-          <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Role</label>
-          <div class="flex items-center my-5">
-            <input  id="default-radio-2" type="radio" value="buyer" name="role" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-            <label for="default-radio-2" class="ms-2 text-sm font-medium text-gray-900 dark:text-black">Buyer</label>
-        </div>
-          <div class="flex items-center my-5">
-            <input  id="default-radio-2" type="radio" value="seller" name="role" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-            <label for="default-radio-2" class="ms-2 text-sm font-medium text-gray-900 dark:text-black">Seller</label>
-          </div>
-        </div>
-        <div class="mx-auto text-center">
-          <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Register new account</button>
-        </div>
-      </form>
+        <% } %>
     </div>
 </body>
 </html>

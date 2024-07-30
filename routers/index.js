@@ -1,6 +1,5 @@
 const express = require('express')
 const router = express.Router()
-const Controller = require('../controllers/controller')
 const UserController = require('../controllers/usercontroller')
 
 const buyer = require('./buyer')
@@ -45,8 +44,6 @@ const sellerSession = (function (req, res, next) {
 
 router.use('/buyer', buyerSession, buyer)
 router.use('/seller', sellerSession, seller)
-
-// router.get('/product/:id', Controller.productDetail)
 
 router.get('/logout', UserController.logOut)
 

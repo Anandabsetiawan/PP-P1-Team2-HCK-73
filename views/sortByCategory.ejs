@@ -7,6 +7,54 @@
 
     <!-- Script -->
     <%- include('./partials/_script') %>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: { "50": "#eff6ff", "100": "#dbeafe", "200": "#bfdbfe", "300": "#93c5fd", "400": "#60a5fa", "500": "#3b82f6", "600": "#2563eb", "700": "#1d4ed8", "800": "#1e40af", "900": "#1e3a8a", "950": "#172554" }
+                    }
+                },
+                fontFamily: {
+                    'body': [
+                        'Inter',
+                        'ui-sans-serif',
+                        'system-ui',
+                        '-apple-system',
+                        'system-ui',
+                        'Segoe UI',
+                        'Roboto',
+                        'Helvetica Neue',
+                        'Arial',
+                        'Noto Sans',
+                        'sans-serif',
+                        'Apple Color Emoji',
+                        'Segoe UI Emoji',
+                        'Segoe UI Symbol',
+                        'Noto Color Emoji'
+                    ],
+                    'sans': [
+                        'Inter',
+                        'ui-sans-serif',
+                        'system-ui',
+                        '-apple-system',
+                        'system-ui',
+                        'Segoe UI',
+                        'Roboto',
+                        'Helvetica Neue',
+                        'Arial',
+                        'Noto Sans',
+                        'sans-serif',
+                        'Apple Color Emoji',
+                        'Segoe UI Emoji',
+                        'Segoe UI Symbol',
+                        'Noto Color Emoji'
+                    ]
+                }
+            }
+        }
+    </script>
 </head>
 <body>
     <!-- Navbar -->
@@ -21,38 +69,153 @@
     <div class="container flex gap-4 my-4 mx-auto pb-2 justify-center border-b-4 border-b-sky-900">
         <div>
             <a href="/buyer/categories">
-                <button class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-full text-sm px-5 py-2.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">All</button>
+                <button class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-full text-sm px-5 py-2.5">All</button>
             </a>
         </div>
         <div>
             <% categories.forEach(el => { %>
                 <a href="/buyer/categories/<%= el.id %>">
-                    <button class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-full text-sm px-5 py-2.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"><%= el.categoryName %></button>
+                    <button class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-full text-sm px-5 py-2.5"><%= el.categoryName %></button>
                 </a>
             <% }); %>
         </div>
     </div>
 
     <!-- Product Cards -->
-    <div class="container mx-auto">
-        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-            <% category.Products.forEach(el => { %>
-                <div class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 hover:scale-105">
-                    <img class="p-8 rounded-t-lg" src="<%= el.imageURL %>" alt="product image" />
-                    <div class="px-5 pb-5">
-                        <h5 class="text-xl font-semibold tracking-tight text-gray-900 dark:text-white"><%= el.productName %></h5>
-                        <div class="flex items-center justify-between">
-                            <span class="text-3xl font-bold text-gray-900 dark:text-white"><%= rupiahFormat(el.price) %></span>
-                            <a href="/buyer/buyProduct/<%= el.id %>" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">See Details</a>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 p-6">
+        <% category.Products.forEach(el=> { %>
+            <% if (el.stock> 0) { %>
+                <!-- Card -->
+                <div
+                    class="bg-white shadow-lg rounded-lg flex flex-col overflow-hidden border border-gray-200 hover:scale-105">
+                    <!-- image -->
+                    <div class="h-56 w-full">
+                        <a href="/buyer/buyProduct/<%= el.id %>">
+                            <img class="mx-auto h-full" src="<%= el.imageURL %>" alt="productImage" />
+                        </a>
+                    </div>
+                    <!-- card contents -->
+                    <div class="flex-1 p-4">
+                        <div>
+                            <div class="mb-4 flex items-center justify-between gap-4">
+                                <span
+                                    class="me-2 rounded bg-primary-100 px-2.5 py-0.5 text-xs font-medium text-primary-800">
+                                    Up to 50% off </span>
+    
+                                <div class="flex items-center justify-end gap-1">
+                                    <button type="button" data-tooltip-target="tooltip-add-to-favorites"
+                                        class="rounded-lg p-2 text-gray-500 hover:bg-gray-100 hover:text-gray-900">
+                                        <span class="sr-only"> Add to Favorites </span>
+                                        <svg class="h-5 w-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                            fill="none" viewBox="0 0 24 24">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                                stroke-width="2" d="M12 6C6.5 1 1 8 5.8 13l6.2 7 6.2-7C23 8 17.5 1 12 6Z" />
+                                        </svg>
+                                    </button>
+                                    <div id="tooltip-add-to-favorites" role="tooltip"
+                                        class="tooltip invisible absolute z-10 inline-block rounded-lg bg-gray-900 px-3 py-2 text-sm font-medium text-white opacity-0 shadow-sm transition-opacity duration-300"
+                                        data-popper-placement="top">
+                                        Add to favorites
+                                        <div class="tooltip-arrow" data-popper-arrow=""></div>
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <!-- product name -->
+                            <a href="/buyer/buyProduct/<%= el.id %>"
+                                class="text-lg font-semibold leading-tight text-gray-900 hover:underline">
+                                <%= el.productName %>
+                            </a>
+    
+                            <!-- stars -->
+                            <div class="mt-2 flex items-center gap-2">
+                                <div class="flex items-center">
+                                    <svg class="h-4 w-4 text-yellow-400" aria-hidden="true"
+                                        xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                                        <path
+                                            d="M13.8 4.2a2 2 0 0 0-3.6 0L8.4 8.4l-4.6.3a2 2 0 0 0-1.1 3.5l3.5 3-1 4.4c-.5 1.7 1.4 3 2.9 2.1l3.9-2.3 3.9 2.3c1.5 1 3.4-.4 3-2.1l-1-4.4 3.4-3a2 2 0 0 0-1.1-3.5l-4.6-.3-1.8-4.2Z" />
+                                    </svg>
+    
+                                    <svg class="h-4 w-4 text-yellow-400" aria-hidden="true"
+                                        xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                                        <path
+                                            d="M13.8 4.2a2 2 0 0 0-3.6 0L8.4 8.4l-4.6.3a2 2 0 0 0-1.1 3.5l3.5 3-1 4.4c-.5 1.7 1.4 3 2.9 2.1l3.9-2.3 3.9 2.3c1.5 1 3.4-.4 3-2.1l-1-4.4 3.4-3a2 2 0 0 0-1.1-3.5l-4.6-.3-1.8-4.2Z" />
+                                    </svg>
+    
+                                    <svg class="h-4 w-4 text-yellow-400" aria-hidden="true"
+                                        xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                                        <path
+                                            d="M13.8 4.2a2 2 0 0 0-3.6 0L8.4 8.4l-4.6.3a2 2 0 0 0-1.1 3.5l3.5 3-1 4.4c-.5 1.7 1.4 3 2.9 2.1l3.9-2.3 3.9 2.3c1.5 1 3.4-.4 3-2.1l-1-4.4 3.4-3a2 2 0 0 0-1.1-3.5l-4.6-.3-1.8-4.2Z" />
+                                    </svg>
+    
+                                    <svg class="h-4 w-4 text-yellow-400" aria-hidden="true"
+                                        xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                                        <path
+                                            d="M13.8 4.2a2 2 0 0 0-3.6 0L8.4 8.4l-4.6.3a2 2 0 0 0-1.1 3.5l3.5 3-1 4.4c-.5 1.7 1.4 3 2.9 2.1l3.9-2.3 3.9 2.3c1.5 1 3.4-.4 3-2.1l-1-4.4 3.4-3a2 2 0 0 0-1.1-3.5l-4.6-.3-1.8-4.2Z" />
+                                    </svg>
+    
+                                    <svg class="h-4 w-4 text-yellow-400" aria-hidden="true"
+                                        xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                                        <path
+                                            d="M13.8 4.2a2 2 0 0 0-3.6 0L8.4 8.4l-4.6.3a2 2 0 0 0-1.1 3.5l3.5 3-1 4.4c-.5 1.7 1.4 3 2.9 2.1l3.9-2.3 3.9 2.3c1.5 1 3.4-.4 3-2.1l-1-4.4 3.4-3a2 2 0 0 0-1.1-3.5l-4.6-.3-1.8-4.2Z" />
+                                    </svg>
+                                </div>
+    
+                                <!-- rating & total rated -->
+                                <p class="text-sm font-medium text-gray-900">5.0</p>
+                                <p class="text-sm font-medium text-gray-500">(455)</p>
+                            </div>
+    
+                            <!-- fast delivery & best price -->
+                            <ul class="mt-2 flex items-center gap-4">
+                                <li class="flex items-center gap-2">
+                                    <svg class="h-4 w-4 text-gray-500" aria-hidden="true"
+                                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M13 7h6l2 4m-8-4v8m0-8V6a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v9h2m8 0H9m4 0h2m4 0h2v-4m0 0h-5m3.5 5.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Zm-10 0a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Z" />
+                                    </svg>
+                                    <p class="text-sm font-medium text-gray-500">Fast Delivery</p>
+                                </li>
+    
+                                <li class="flex items-center gap-2">
+                                    <svg class="h-4 w-4 text-gray-500" aria-hidden="true"
+                                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-width="2"
+                                            d="M8 7V6c0-.6.4-1 1-1h11c.6 0 1 .4 1 1v7c0 .6-.4 1-1 1h-1M3 18v-7c0-.6.4-1 1-1h11c.6 0 1 .4 1 1v7c0 .6-.4 1-1 1H4a1 1 0 0 1-1-1Zm8-3.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z" />
+                                    </svg>
+                                    <p class="text-sm font-medium text-gray-500">Best Price</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- card footer -->
+                    <div class="p-4 border-t border-gray-200 bg-gray-50">
+                        <div class="flex items-center justify-between gap-4">
+                            <!-- product price -->
+                            <p class="text-2xl font-extrabold leading-tight text-gray-900">
+                                <%= rupiahFormat(el.price) %>
+                            </p>
+                            <!-- See product details button -->
+                            <a href="/buyer/buyProduct/<%= el.id %>"
+                                class="inline-flex items-center rounded-lg bg-primary-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300">
+                                <svg class="w-6 h-6 text-white -ms-2 me-2 h-5 w-5" aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                                    viewBox="0 0 24 24">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2" d="M19 12H5m14 0-4 4m4-4-4-4" />
+                                </svg>
+                                Details
+                            </a>
                         </div>
                     </div>
                 </div>
-            <% }); %>
-        </div>
+                <% } %>
+                    <% }); %>
     </div>
 
     <!-- Footer -->
-     <%- include('./partials/_footer') %>
+    <%- include('./partials/_footer') %>
 
 </body>
 </html>

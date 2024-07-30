@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buy Product</title>
+
+    <!-- Script -->
+    <%- include('./partials/_script') %>
+    <script>
+    tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: { "50": "#eff6ff", "100": "#dbeafe", "200": "#bfdbfe", "300": "#93c5fd", "400": "#60a5fa", "500": "#3b82f6", "600": "#2563eb", "700": "#1d4ed8", "800": "#1e40af", "900": "#1e3a8a", "950": "#172554" }
+                    }
+                },
+                fontFamily: {
+                    'body': [
+                        'Inter',
+                        'ui-sans-serif',
+                        'system-ui',
+                        '-apple-system',
+                        'system-ui',
+                        'Segoe UI',
+                        'Roboto',
+                        'Helvetica Neue',
+                        'Arial',
+                        'Noto Sans',
+                        'sans-serif',
+                        'Apple Color Emoji',
+                        'Segoe UI Emoji',
+                        'Segoe UI Symbol',
+                        'Noto Color Emoji'
+                    ],
+                    'sans': [
+                        'Inter',
+                        'ui-sans-serif',
+                        'system-ui',
+                        '-apple-system',
+                        'system-ui',
+                        'Segoe UI',
+                        'Roboto',
+                        'Helvetica Neue',
+                        'Arial',
+                        'Noto Sans',
+                        'sans-serif',
+                        'Apple Color Emoji',
+                        'Segoe UI Emoji',
+                        'Segoe UI Symbol',
+                        'Noto Color Emoji'
+                    ]
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <!-- Navbar -->
+    <%- include('./partials/_navbar') %>
+
+    <!-- success buy product -->
+    <section class="bg-white py-8 antialiased md:py-16">
+        <div class="mx-auto max-w-2xl px-4 2xl:px-0">
+            <h2 class="text-xl font-semibold text-gray-900 sm:text-2xl mb-2">Thanks for your order!</h2>
+            <p class="text-gray-500 mb-6 md:mb-8">Your order <a href="#"
+                    class="font-medium text-gray-900 hover:underline">#<%= new Date().getTime() %></a> will be processed within
+                24 hours during working days. We will notify you by email once your order has been shipped.</p>
+            <div
+                class="space-y-4 sm:space-y-2 rounded-lg border border-gray-100 bg-gray-50 p-6 mb-6 md:mb-8">
+                <dl class="sm:flex items-center justify-between gap-4">
+                    <dt class="font-normal mb-1 sm:mb-0 text-gray-500">Date</dt>
+                    <dd class="font-medium text-gray-900 sm:text-end"><%= new Date().toLocaleDateString() %></dd>
+                </dl>
+                <dl class="sm:flex items-center justify-between gap-4">
+                    <dt class="font-normal mb-1 sm:mb-0 text-gray-500">Payment Method</dt>
+                    <dd class="font-medium text-gray-900 sm:text-end">JPMorgan monthly installments</dd>
+                </dl>
+                <dl class="sm:flex items-center justify-between gap-4">
+                    <dt class="font-normal mb-1 sm:mb-0 text-gray-500">Name</dt>
+                    <dd class="font-medium text-gray-900 sm:text-end">Flowbite Studios LLC</dd>
+                </dl>
+                <dl class="sm:flex items-center justify-between gap-4">
+                    <dt class="font-normal mb-1 sm:mb-0 text-gray-500">Address</dt>
+                    <dd class="font-medium text-gray-900 sm:text-end">34 Scott Street, San Francisco,
+                        California, USA</dd>
+                </dl>
+                <dl class="sm:flex items-center justify-between gap-4">
+                    <dt class="font-normal mb-1 sm:mb-0 text-gray-500">Phone</dt>
+                    <dd class="font-medium text-gray-900 sm:text-end">+(123) 456 7890</dd>
+                </dl>
+            </div>
+            <div class="text-center items-center space-x-4">
+                <a href="/buyer"
+                    class="py-2.5 px-5 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-100">Return
+                    to shopping
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+     <%- include('./partials/_footer') %>
+
+</body>
+</html>

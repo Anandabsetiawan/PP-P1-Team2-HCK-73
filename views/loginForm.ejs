@@ -7,42 +7,152 @@
 
     <!-- Script -->
     <%- include('./partials/_script') %>
+    <script>
+      tailwind.config = {
+          darkMode: 'class',
+          theme: {
+            extend: {
+              colors: {
+                primary: { "50": "#eff6ff", "100": "#dbeafe", "200": "#bfdbfe", "300": "#93c5fd", "400": "#60a5fa", "500": "#3b82f6", "600": "#2563eb", "700": "#1d4ed8", "800": "#1e40af", "900": "#1e3a8a", "950": "#172554" }
+              }
+            },
+            fontFamily: {
+              'body': [
+                'Inter',
+                'ui-sans-serif',
+                'system-ui',
+                '-apple-system',
+                'system-ui',
+                'Segoe UI',
+                'Roboto',
+                'Helvetica Neue',
+                'Arial',
+                'Noto Sans',
+                'sans-serif',
+                'Apple Color Emoji',
+                'Segoe UI Emoji',
+                'Segoe UI Symbol',
+                'Noto Color Emoji'
+              ],
+              'sans': [
+                'Inter',
+                'ui-sans-serif',
+                'system-ui',
+                '-apple-system',
+                'system-ui',
+                'Segoe UI',
+                'Roboto',
+                'Helvetica Neue',
+                'Arial',
+                'Noto Sans',
+                'sans-serif',
+                'Apple Color Emoji',
+                'Segoe UI Emoji',
+                'Segoe UI Symbol',
+                'Noto Color Emoji'
+              ]
+            }
+          }
+        }
+    </script>
 </head>
-<body>
-
-    <!-- Title -->
-    <div class="my-10 text-4xl font-bold text-center container mx-auto">
-      <h1>BliGua</h1>
-    </div>
-
+<body class="bg-gray-100">
     <!-- Login Form-->
-    <div class="container mx-auto my-10">
-      <form method="post" action="/login" class="max-w-sm mx-auto">
-        <div class="my-5 text-center">
-          <% if (errors) { %>
-            <p class="text-red-600 ps-3">
-                <%= errors %>
-            </p>
-        <% } %>
+    <section>
+        <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+            <img class="flex items-center mb-2 text-2xl font-semibold text-gray-900 w-1/4" src="https://i.imgur.com/onv9Nzc.png" alt="logo">
+          <div
+            class="w-full bg-white rounded-lg shadow md:mt-0 sm:max-w-md xl:p-0">
+            <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
+              <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
+                Sign in to your account
+              </h1>
+              <form class="space-y-4 md:space-y-6" action="/login" method="post">
+                <div>
+                  <!-- if error -->
+                  <% if (errors) { %>
+                    <% if (errors.split(",").find(el=> el.includes("email is required"))) { %>
+                    <div>
+                        <label for="email" class="block mb-2 text-sm font-medium text-red-700">Your email</label>
+                        <input type="email" name="email" id="email"
+                          class="bg-red-50 border border-red-500 text-red-900 placeholder-red-700 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5"
+                          placeholder="name@email.com">
+                        <p class="mt-2 text-sm text-red-600 font-medium">
+                          <%= errors %>
+                        </p>
+                    </div>
+                    <% } else { %>
+                      <div>
+                        <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Your email</label>
+                        <input type="email" name="email" id="email"
+                          class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                          placeholder="name@email.com">
+                      </div>
+                    <% } %>
+                  <% } else { %>
+                    <div>
+                      <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Your email</label>
+                      <input type="email" name="email" id="email"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                        placeholder="name@email.com">
+                    </div>
+                  <% } %>
+                </div>
+                <% if (errors) { %>
+                  <% if (errors.split(",").find(el=> el.includes("password is required"))) { %>
+                    <div>
+                      <label for="password" class="block mb-2 text-sm font-medium text-red-700">Password</label>
+                      <input type="password" name="password" id="password" placeholder="••••••••"
+                        class="bg-red-50 border border-red-500 text-red-900 placeholder-red-700 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5">
+                      <p class="mt-2 text-sm text-red-600 font-medium">
+                        <%= errors %>
+                      </p>
+                    </div>
+                  <% } else { %>
+                    <div>
+                      <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Password</label>
+                      <input type="password" name="password" id="password" placeholder="••••••••"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5">
+                    </div>
+                  <% } %>
+                <% } else { %>
+                  <div>
+                    <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Password</label>
+                    <input type="password" name="password" id="password" placeholder="••••••••"
+                      class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5">
+                  </div>
+                <% } %>
+                <div>
+                  <% if (errors) { %>
+                    <p class="text-center mt-2 text-sm text-red-600 font-medium">
+                      <%= errors.split(",").find(el=> el.includes("invalid email / password")) %>
+                    </p>
+                  <% } %>
+                </div>
+                <div class="flex items-center justify-between">
+                  <div class="flex items-start">
+                    <div class="flex items-center h-5">
+                      <input id="remember" aria-describedby="remember" type="checkbox"
+                        class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300">
+                    </div>
+                    <div class="ml-3 text-sm">
+                      <label for="remember" class="text-gray-500">Remember me</label>
+                    </div>
+                  </div>
+                  <a href="#" class="text-sm font-medium text-primary-600 hover:underline">Forgot
+                    password?</a>
+                </div>
+                <button type="submit"
+                  class="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Sign
+                  in</button>
+                <p class="text-sm font-light text-gray-500">
+                  Don’t have an account yet? <a href="/register"
+                    class="font-medium text-primary-600 hover:underline">Sign up</a>
+                </p>
+              </form>
+            </div>
+          </div>
         </div>
-          <div class="mb-5">
-            <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Your email</label>
-            <input name="email" type="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@email.com" />
-          </div>
-          <div class="mb-5">
-            <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Your password</label>
-            <input name="password" type="password" id="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"/>
-          </div>
-          <div class="text-center">
-            <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Login</button>
-          </div>
-        </form>
-    </div>
-  
-  <!-- Register Button -->
-  <div class="container mx-auto text-center my-10">
-    <a href="/register" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Register Now</a>
-  </div>
-     
+    </section>
 </body>
 </html>

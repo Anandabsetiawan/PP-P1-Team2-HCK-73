@@ -1,0 +1,162 @@
+[
+  {
+    "productName": "Samsung Galaxy S21 - 128GB, Phantom Gray",
+    "description": "The Samsung Galaxy S21 features a 6.2-inch Dynamic AMOLED display, triple rear camera setup with 64MP main sensor, and a powerful Exynos 2100 processor. With 128GB of internal storage and 8GB of RAM, this smartphone offers smooth performance and ample space for your apps and media. The Phantom Gray finish adds a sleek, modern touch to its design.",
+    "imageURL": "https://static.doji.co/product/medias/smartphones/samsung/galaxy-s21-5g/1-front-back-phantom-gray.png",
+    "stock": 150,
+    "price": 9999000,
+    "CategoryId": 1
+  },
+  {
+    "productName": "Apple MacBook Pro - M1, 256GB SSD, Space Gray",
+    "description": "The Apple MacBook Pro with M1 chip offers incredible performance with its 8-core CPU and 8-core GPU. It features a 13-inch Retina display, 256GB SSD for fast storage, and 8GB of unified memory. The Space Gray aluminum body is both durable and stylish, making it a great choice for professionals and students alike.",
+    "imageURL": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/mbp-spacegray-select-202011?wid=1200&hei=630&fmt=jpeg&qlt=95&.v=1603406905000",
+    "stock": 75,
+    "price": 19999000,
+    "CategoryId": 1
+  },
+  {
+    "productName": "Sony WH-1000XM4 Wireless Noise-Canceling Headphones",
+    "description": "The Sony WH-1000XM4 headphones offer industry-leading noise cancellation, superior sound quality, and a comfortable fit for all-day listening. With up to 30 hours of battery life and touch sensor controls, these headphones are perfect for travel, work, or relaxation.",
+    "imageURL": "https://m.media-amazon.com/images/I/71o8Q5XJS5L._AC_SL1500_.jpg",
+    "stock": 50,
+    "price": 4299000,
+    "CategoryId": 1
+  },
+  {
+    "productName": "Canon EOS M50 Mirrorless Camera",
+    "description": "The Canon EOS M50 is a versatile mirrorless camera that features a 24.1MP APS-C CMOS sensor, 4K video recording, and a vari-angle touchscreen. It's ideal for capturing high-quality photos and videos, making it perfect for content creators and photography enthusiasts.",
+    "imageURL": "https://megakamera.com/wp-content/uploads/2021/05/Canon-EOS-M50-Mirrorless-Digital-Camera-with-15-45mm-Black-1.jpg",
+    "stock": 30,
+    "price": 7999000,
+    "CategoryId": 1
+  },
+  {
+    "productName": "Marvel Legends Spider-Man Action Figure - 6 Inches",
+    "description": "This Marvel Legends Spider-Man action figure stands 6 inches tall and features multiple points of articulation, allowing you to pose Spider-Man in various action stances. The figure is highly detailed, capturing the likeness of the superhero with precision. A perfect addition to any Marvel fan's collection.",
+    "imageURL": "https://down-id.img.susercontent.com/file/id-11134207-7qul3-lhzy41n0fqsb70",
+    "stock": 200,
+    "price": 299000,
+    "CategoryId": 2
+  },
+  {
+    "productName": "Monopoly Classic Board Game - Family Edition",
+    "description": "The Monopoly Classic Board Game Family Edition offers hours of entertainment for 2-6 players. Buy, sell, and trade properties to become the wealthiest player. This edition includes the traditional game pieces, a game board, property cards, and play money. A timeless game that brings families and friends together.",
+    "imageURL": "https://m.media-amazon.com/images/I/816dE7TY9xL.jpg",
+    "stock": 120,
+    "price": 499000,
+    "CategoryId": 2
+  },
+  {
+    "productName": "Lego City Police Station Building Kit",
+    "description": "The Lego City Police Station Building Kit includes everything you need to create a detailed police station complete with vehicles, minifigures, and accessories. This set offers hours of imaginative play and helps develop building skills and creativity.",
+    "imageURL": "https://images.tokopedia.net/img/cache/500-square/VqbcmM/2022/5/19/44fff601-8bbc-439e-b9f0-d8035d970338.jpg",
+    "stock": 150,
+    "price": 1499000,
+    "CategoryId": 2
+  },
+  {
+    "productName": "Hot Wheels 50-Car Pack",
+    "description": "The Hot Wheels 50-Car Pack is a must-have for any Hot Wheels collector or enthusiast. Each pack includes 50 different 1:64 scale die-cast vehicles, offering a variety of styles and designs. Perfect for racing, collecting, or display.",
+    "imageURL": "https://i5.walmartimages.com/seo/Hot-Wheels-Ultimate-Collectors-Gift-Pack-Car-Vehicle-Playset-50-Pieces_494564a9-58a4-46ce-8cfc-1c1b4d8d3d8e.0c0e1bb60a9ad8060a8646b4cb677449.jpeg",
+    "stock": 80,
+    "price": 699000,
+    "CategoryId": 2
+  },
+  {
+    "productName": "Seventh Generation Dish Soap - 750ml, Lemon Scent",
+    "description": "Seventh Generation Dish Soap is made with plant-based ingredients and is free of harsh chemicals. The 750ml bottle features a refreshing lemon scent and provides powerful cleaning action to cut through grease and grime. Eco-friendly and biodegradable, it ensures your dishes are sparkling clean while being gentle on the environment.",
+    "imageURL": "https://m.media-amazon.com/images/I/81-nTRDOF-L.jpg",
+    "stock": 300,
+    "price": 59000,
+    "CategoryId": 3
+  },
+  {
+    "productName": "Bounty Paper Towels - 12 Rolls, Select-A-Size",
+    "description": "Bounty Paper Towels offer superior absorbency and strength for all your cleaning needs. The Select-A-Size feature allows you to use just the right amount, reducing waste. Each pack includes 12 rolls, providing plenty of paper towels for your household. Perfect for cleaning up spills, wiping surfaces, and more.",
+    "imageURL": "https://m.media-amazon.com/images/I/71tImjQv7nL._AC_UF1000,1000_QL80_.jpg",
+    "stock": 500,
+    "price": 149000,
+    "CategoryId": 3
+  },
+  {
+    "productName": "Tide Original Laundry Detergent - 150 Oz",
+    "description": "Tide Original Laundry Detergent provides superior cleaning power, leaving your clothes fresh and clean. The 150 oz bottle ensures you have plenty of detergent for multiple loads of laundry. Tide's advanced formula effectively removes stains and odors, making it a household essential.",
+    "imageURL": "https://images.tokopedia.net/img/cache/700/hDjmkQ/2020/11/22/aab6d845-8df4-4555-9de6-2024912e5653.jpg",
+    "stock": 250,
+    "price": 329000,
+    "CategoryId": 3
+  },
+  {
+    "productName": "Clorox Disinfecting Wipes - 75 Count, Fresh Scent",
+    "description": "Clorox Disinfecting Wipes kill 99.9% of viruses and bacteria, making them perfect for cleaning and disinfecting surfaces in your home. The 75-count pack provides plenty of wipes for multiple uses. The fresh scent leaves your home smelling clean and inviting.",
+    "imageURL": "https://m.media-amazon.com/images/I/71-IrBpvnSL.jpg",
+    "stock": 400,
+    "price": 89000,
+    "CategoryId": 3
+  },
+  {
+    "productName": "Wilson Ultra 100 Tennis Racket - 4 1/4 Grip",
+    "description": "The Wilson Ultra 100 Tennis Racket is designed for players of all skill levels. It features a lightweight frame, 100 square inch head size, and a 4 1/4 grip size for optimal control and power. The racket's construction ensures durability and excellent performance on the court. Ideal for both casual and competitive play.",
+    "imageURL": "https://images.tokopedia.net/img/cache/500-square/VqbcmM/2022/9/6/267300c8-4a83-497a-a5c1-03ca9bfd2174.jpg",
+    "stock": 85,
+    "price": 749000,
+    "CategoryId": 4
+  },
+  {
+    "productName": "Gaiam Essentials Yoga Mat - 6mm Thick, Green",
+    "description": "The Gaiam Essentials Yoga Mat provides a non-slip surface and extra cushioning for a comfortable yoga practice. With a 6mm thickness, it offers excellent support for your joints. The mat is lightweight and comes with a carrying strap for easy transport. Available in a vibrant green color, it is perfect for yoga, pilates, and other floor exercises.",
+    "imageURL": "https://www.gaiam.com/cdn/shop/products/05-63315_6MM-GAIAM-ESSENTIALS-YOGAMAT-GREEN_A.jpg?v=1668557105",
+    "stock": 150,
+    "price": 299000,
+    "CategoryId": 4
+  },
+  {
+    "productName": "Adidas Men's Running Shoes - Ultraboost 21",
+    "description": "Adidas Ultraboost 21 running shoes offer exceptional comfort and energy return with their responsive Boost midsole. The Primeknit upper provides a snug, supportive fit, while the Continental rubber outsole ensures excellent traction. Perfect for running and everyday wear.",
+    "imageURL": "https://images.tokopedia.net/img/cache/500-square/VqbcmM/2021/10/2/f002f80b-a22b-4db3-b7f7-3b7ebb7bdca1.jpg",
+    "stock": 60,
+    "price": 2599000,
+    "CategoryId": 4
+  },
+  {
+    "productName": "Nike Pro Training Mat - 6mm Thick, Black",
+    "description": "The Nike Pro Training Mat offers a non-slip surface and 6mm thickness for extra cushioning during workouts. Its durable design ensures it can withstand intense training sessions, while the lightweight construction makes it easy to carry. Ideal for yoga, pilates, and other fitness activities.",
+    "imageURL": "https://m.media-amazon.com/images/I/71f9CPjTFjL.jpg",
+    "stock": 140,
+    "price": 499000,
+    "CategoryId": 4
+  },
+  {
+    "productName": "Moleskine Classic Notebook - Hardcover, Large, Ruled",
+    "description": "The Moleskine Classic Notebook is a large, hardcover notebook with ruled pages. It features a durable cover, elastic closure, and an expandable inner pocket for loose notes. Ideal for jotting down thoughts, sketches, and important notes. The notebook's high-quality paper ensures a smooth writing experience.",
+    "imageURL": "https://images.tokopedia.net/img/cache/700/VqbcmM/2023/11/17/135beb44-8adc-4d23-b925-1c248492c9c6.jpg",
+    "stock": 100,
+    "price": 99000,
+    "CategoryId": 5
+  },
+  {
+    "productName": "Contigo Autoseal West Loop Travel Mug - 16oz, Matte Black",
+    "description": "The Contigo Autoseal West Loop Travel Mug keeps your drinks hot for up to 5 hours or cold for up to 12 hours. It features a leak-proof lid with AUTOSEAL technology that automatically seals between sips. The 16oz capacity is perfect for coffee, tea, and other beverages. The matte black finish adds a stylish touch to this durable, stainless steel mug.",
+    "imageURL": "https://images.tokopedia.net/img/cache/700/hDjmkQ/2020/10/17/4a281e54-9454-4688-9811-9d3b7e074ac1.jpg",
+    "stock": 250,
+    "price": 199000,
+    "CategoryId": 5
+  },
+  {
+    "productName": "Fjällräven Kånken Classic Backpack",
+    "description": "The Fjällräven Kånken Classic Backpack is made from durable Vinylon F fabric and features a spacious main compartment, a front zippered pocket, and two side pockets. Its ergonomic design provides comfort, while the iconic style makes it a favorite for everyday use.",
+    "imageURL": "https://images.tokopedia.net/img/cache/500-square/VqbcmM/2023/1/4/c0029caf-99d9-4d8d-b64c-a38ae451a35d.jpg",
+    "stock": 90,
+    "price": 1299000,
+    "CategoryId": 5
+  },
+  {
+    "productName": "Anker PowerCore 10000 Portable Charger",
+    "description": "The Anker PowerCore 10000 is a compact, high-capacity portable charger that provides up to 2.5 full charges for most smartphones. It features fast charging technology and multiple safety features to protect your devices. Perfect for on-the-go power needs.",
+    "imageURL": "https://images.tokopedia.net/img/cache/700/VqbcmM/2023/11/29/f89f11a7-6952-498f-985a-caab8c83d66f.jpg",
+    "stock": 300,
+    "price": 349000,
+    "CategoryId": 5
+  }
+]

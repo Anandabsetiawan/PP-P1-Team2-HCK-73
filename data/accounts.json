@@ -1,0 +1,44 @@
+[
+    {
+        "name": "TechTertainment Store",
+        "address": "123 Maple Street, Springfield, IL, 62701",
+        "phoneNumber": "+1-555-1234",
+        "UserId": 1,
+        "role": "seller"
+    },
+    {
+        "name": "EveryDay Store",
+        "address": "456 Oak Avenue, Metropolis, NY, 10001",
+        "phoneNumber": "+1-555-5678",
+        "UserId": 2,
+        "role": "seller"
+    },
+    {
+        "name": "Anything Pawnshop",
+        "address": "789 Pine Road, Gotham, NJ, 07001",
+        "phoneNumber": "+1-555-9012",
+        "UserId": 3,
+        "role": "seller"
+    },
+    {
+        "name": "David Wilson",
+        "address": "101 Birch Lane, Rivertown, CA, 90210",
+        "phoneNumber": "+1-555-3456",
+        "UserId": 4,
+        "role": "buyer"
+    },
+    {
+        "name": "Eva Martinez",
+        "address": "202 Cedar Drive, Lakeview, TX, 73301",
+        "phoneNumber": "+1-555-7890",
+        "UserId": 5,
+        "role": "buyer"
+    },
+    {
+        "name": "Frank Thompson",
+        "address": "303 Elm Street, Hillcrest, FL, 33101",
+        "phoneNumber": "+1-555-2345",
+        "UserId": 6,
+        "role": "buyer"
+    }
+]

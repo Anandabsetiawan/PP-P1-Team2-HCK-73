@@ -7,84 +7,354 @@
 
     <!-- Script -->
     <%- include('./partials/_script') %>
+    <script>
+        tailwind.config = {
+                darkMode: 'class',
+                theme: {
+                    extend: {
+                        colors: {
+                            primary: { "50": "#eff6ff", "100": "#dbeafe", "200": "#bfdbfe", "300": "#93c5fd", "400": "#60a5fa", "500": "#3b82f6", "600": "#2563eb", "700": "#1d4ed8", "800": "#1e40af", "900": "#1e3a8a", "950": "#172554" }
+                        }
+                    },
+                    fontFamily: {
+                        'body': [
+                            'Inter',
+                            'ui-sans-serif',
+                            'system-ui',
+                            '-apple-system',
+                            'system-ui',
+                            'Segoe UI',
+                            'Roboto',
+                            'Helvetica Neue',
+                            'Arial',
+                            'Noto Sans',
+                            'sans-serif',
+                            'Apple Color Emoji',
+                            'Segoe UI Emoji',
+                            'Segoe UI Symbol',
+                            'Noto Color Emoji'
+                        ],
+                        'sans': [
+                            'Inter',
+                            'ui-sans-serif',
+                            'system-ui',
+                            '-apple-system',
+                            'system-ui',
+                            'Segoe UI',
+                            'Roboto',
+                            'Helvetica Neue',
+                            'Arial',
+                            'Noto Sans',
+                            'sans-serif',
+                            'Apple Color Emoji',
+                            'Segoe UI Emoji',
+                            'Segoe UI Symbol',
+                            'Noto Color Emoji'
+                        ]
+                    }
+                }
+            }
+    </script>
 </head>
 <body>
     <!-- Navbar -->
     <%- include('./partials/_navbar') %>
     
     <!-- Title -->
-    <div class="my-10 text-4xl font-bold text-center container mx-auto">
+    <div class="my-8 text-4xl font-bold text-center container mx-auto">
         <h1>Browse our Products</h1>
     </div>
 
-    <!-- Search Bar -->
-    <div class="my-10 pb-2 text-center border-b-4 border-b-sky-900 container mx-auto">
-        <form class="flex items-center max-w-lg mx-auto" method="get" action="/buyer">   
+    <!-- Search Bar & Sort -->
+    <div class="my-5 pb-4 text-center border-b-4 border-b-sky-900 container mx-auto">
+        <form class="flex items-center max-w-lg mx-auto" method="get" action="/buyer">
             <label class="sr-only">Search</label>
             <div class="relative w-full">
                 <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                    <svg class="w-[24px] h-[24px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                    <svg class="w-[24px] h-[24px] text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 10V6a3 3 0 0 1 3-3v0a3 3 0 0 1 3 3v4m3-2 .917 11.923A1 1 0 0 1 17.92 21H6.08a1 1 0 0 1-.997-1.077L6 8h12Z"/>
                       </svg>                      
                 </div>
-                <input type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search Products..." name="search"/>
+                <input type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5" placeholder="Search Products..." name="search"/>
                 <button type="button" class="absolute inset-y-0 end-0 flex items-center pe-3">
-                    <svg class="w-4 h-4 text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 20">
+                    <svg class="w-4 h-4 text-gray-500 hover:text-gray-900" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 20">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7v3a5.006 5.006 0 0 1-5 5H6a5.006 5.006 0 0 1-5-5V7m7 9v3m-3 0h6M7 1h2a3 3 0 0 1 3 3v5a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V4a3 3 0 0 1 3-3Z"/>
                     </svg>
                 </button>
             </div>
-            <button type="submit" class="inline-flex items-center py-2.5 px-3 ms-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+            <button type="submit" class="inline-flex items-center py-2.5 px-3 ms-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300">
                 <svg class="w-4 h-4 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
                 </svg>Search
             </button>
+            <!-- sort -->
+            <div class="flex items-center space-x-4 ms-4">
+                <button id="sortDropdownButton1" data-dropdown-toggle="dropdownSort1" type="button"
+                    class="flex w-full items-center justify-center rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm font-medium text-gray-900 hover:bg-gray-100 hover:text-primary-700 focus:ring-blue-500 focus:border-blue-500 focus:ring-1 sm:w-auto">
+                    <svg class="-ms-0.5 me-2 h-4 w-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                        fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M7 4v16M7 4l3 3M7 4 4 7m9-3h6l-6 6h6m-6.5 10 3.5-7 3.5 7M14 18h4" />
+                    </svg>
+                    Sort
+                    <svg class="-me-0.5 ms-2 h-4 w-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                        fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="m19 9-7 7-7-7" />
+                    </svg>
+                </button>
+                <div id="dropdownSort1"
+                    class="z-50 hidden w-40 divide-y divide-gray-100 rounded-lg bg-white shadow border border-gray-300"
+                    data-popper-placement="bottom">
+                    <ul class="p-2 text-left text-sm font-medium text-gray-500"
+                        aria-labelledby="sortDropdownButton">
+                        <li>
+                            <a href="#"
+                                class="group inline-flex w-full items-center rounded-md px-3 py-2 text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900">
+                                Name
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#"
+                                class="group inline-flex w-full items-center rounded-md px-3 py-2 text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900">
+                                Newest </a>
+                        </li>
+                        <li>
+                            <a href="#"
+                                class="group inline-flex w-full items-center rounded-md px-3 py-2 text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900">
+                                Price
+                                <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                                    viewBox="0 0 24 24">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 19V5m0 14-4-4m4 4 4-4" />
+                                </svg>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#"
+                                class="group inline-flex w-full items-center rounded-md px-3 py-2 text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900">
+                                Price
+                                <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                                    viewBox="0 0 24 24">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 6v13m0-13 4 4m-4-4-4 4" />
+                                </svg>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </form>
     </div>
 
+    <!-- Products Carousel -->
+    <% if (products.length > 0) { %>
+        <div id="default-carousel" class="relative container mx-auto border-b-4 border-b-sky-900 pb-4" data-carousel="slide">
+            <!-- Carousel wrapper -->
+            <div class="relative h-80 overflow-hidden rounded-lg">
+                <!-- Item 1 -->
+                <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                    <img src="https://img.freepik.com/free-vector/flat-design-shopping-center-twitch-banner_23-2149325215.jpg?w=1380&t=st=1722097332~exp=1722097932~hmac=cf41dad6b6d37a9d4c32872e9b00db69955f6c687bcac9d86669852516782d98"
+                        class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="carouselImage">
+                </div>
+                <!-- Item 2 -->
+                <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                    <img src="https://img.freepik.com/free-vector/flat-design-shopping-center-twitter-header_23-2149325213.jpg?w=1380&t=st=1722097324~exp=1722097924~hmac=aa35e353b570301cb85b4ac755228ec2016309af961e569aff46d599aa5cefa5"
+                        class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="carouselImage">
+                </div>
+                <!-- Item 3 -->
+                <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                    <img src="https://img.freepik.com/free-vector/flat-design-charity-event-twitch-banner_23-2149448448.jpg?w=1380&t=st=1722097260~exp=1722097860~hmac=aae9b84849653de829057e4c4ef2d4ddb1e6b06330034177580f8c37a6c81987"
+                        class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="carouselImage">
+                </div>
+                <!-- Item 4 -->
+                <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                    <img src="https://img.freepik.com/free-vector/flat-design-shopping-center-twitch-banner_23-2149337409.jpg?w=1380&t=st=1722097162~exp=1722097762~hmac=6e6a22c88c3b8d1c117fac9f4accd4f63c0e72d318140062e591f0055128ff47"
+                        class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="carouselImage">
+                </div>
+                <!-- Item 5 -->
+                <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                    <img src="https://img.freepik.com/free-vector/realistic-supermarket-twitch-banner-with-discount_23-2149359992.jpg?w=1380&t=st=1722097079~exp=1722097679~hmac=bdc8f45be4134518aef55596dac8358b3276512b432a38b418dbe3c196946f2d"
+                        class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="carouselImage">
+                </div>
+            </div>
+            <!-- Slider indicators -->
+            <div class="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
+                <button type="button" class="w-3 h-3 rounded-full" aria-current="true" aria-label="Slide 1"
+                    data-carousel-slide-to="0"></button>
+                <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 2"
+                    data-carousel-slide-to="1"></button>
+                <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 3"
+                    data-carousel-slide-to="2"></button>
+                <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 4"
+                    data-carousel-slide-to="3"></button>
+                <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 5"
+                    data-carousel-slide-to="4"></button>
+            </div>
+            <!-- Slider controls -->
+            <button type="button"
+                class="absolute top-0 -start-9 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+                data-carousel-prev>
+                <span
+                    class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gray-800/30 group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-gray-800/70 group-focus:outline-none">
+                    <svg class="w-4 h-4 text-gray-800 rtl:rotate-180" aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M5 1 1 5l4 4" />
+                    </svg>
+                    <span class="sr-only">Previous</span>
+                </span>
+            </button>
+            <button type="button"
+                class="absolute top-0 -end-9 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+                data-carousel-next>
+                <span
+                    class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gray-800/30 group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-gray-800/70 group-focus:outline-none">
+                    <svg class="w-4 h-4 text-gray-800 rtl:rotate-180" aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="m1 9 4-4-4-4" />
+                    </svg>
+                    <span class="sr-only">Next</span>
+                </span>
+            </button>
+        </div>
+    <% } %>
+
+    <!-- Search No Result -->
+    <% if (products.length===0) { %>
+        <div class="my-5 text-xl font-normal text-center container mx-auto p-4 border border-gray-200 shadow-lg rounded-lg">
+            <h3>Product not available</h3>
+        </div>
+    <% } %>
+
     <!-- Product Cards -->
-    <div class="container mx-auto">
-        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-            <% products.forEach(el => { %>
-                <% if (el.stock > 0) { %>
-                    <div class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 hover:scale-105">
-                        <img class="p-8 rounded-t-lg" src="<%= el.imageURL %>" alt="product image" />
-                        <div class="px-5 pb-5">
-                            <h5 class="text-xl font-semibold tracking-tight text-gray-900 dark:text-white"><%= el.productName %></h5>
-                            <div class="text-lg font-semibold tracking-tight text-gray-900 dark:text-white my-4">
-                                Stock: <%= el.stock %>
-                            </div>
-                            <div class="flex items-center justify-between">
-                                <span class="text-xl font-bold text-gray-900 dark:text-white"><%= rupiahFormat(el.price) %></span>
-                                <!-- Buy Button -->
-                                <a href="/buyer/buyProduct/<%= el.id %>" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">See Details</a>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 p-6">
+        <% products.forEach(el=> { %>
+            <% if (el.stock > 0) { %>
+            <!-- Card -->
+            <div class="bg-white shadow-lg rounded-lg flex flex-col overflow-hidden border border-gray-200 hover:scale-105">
+                <!-- image -->
+                <div class="h-56 w-full">
+                    <a href="/buyer/buyProduct/<%= el.id %>">
+                        <img class="mx-auto h-full" src="<%= el.imageURL %>" alt="productImage" />
+                    </a>
+                </div>
+                <!-- card contents -->
+                <div class="flex-1 p-4">
+                    <div>
+                        <div class="mb-4 flex items-center justify-between gap-4">
+                            <span
+                                class="me-2 rounded bg-primary-100 px-2.5 py-0.5 text-xs font-medium text-primary-800">
+                                Up to 50% off </span>
+                    
+                            <div class="flex items-center justify-end gap-1">
+                                <button type="button" data-tooltip-target="tooltip-add-to-favorites"
+                                    class="rounded-lg p-2 text-gray-500 hover:bg-gray-100 hover:text-gray-900">
+                                    <span class="sr-only"> Add to Favorites </span>
+                                    <svg class="h-5 w-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                        viewBox="0 0 24 24">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M12 6C6.5 1 1 8 5.8 13l6.2 7 6.2-7C23 8 17.5 1 12 6Z" />
+                                    </svg>
+                                </button>
+                                <div id="tooltip-add-to-favorites" role="tooltip"
+                                    class="tooltip invisible absolute z-10 inline-block rounded-lg bg-gray-900 px-3 py-2 text-sm font-medium text-white opacity-0 shadow-sm transition-opacity duration-300"
+                                    data-popper-placement="top">
+                                    Add to favorites
+                                    <div class="tooltip-arrow" data-popper-arrow=""></div>
+                                </div>
                             </div>
                         </div>
+                    
+                        <!-- product name -->
+                        <a href="/buyer/buyProduct/<%= el.id %>" class="text-lg font-semibold leading-tight text-gray-900 hover:underline">
+                            <%= el.productName %>
+                        </a>
+                    
+                        <!-- stars -->
+                        <div class="mt-2 flex items-center gap-2">
+                            <div class="flex items-center">
+                                <svg class="h-4 w-4 text-yellow-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                    fill="currentColor" viewBox="0 0 24 24">
+                                    <path
+                                        d="M13.8 4.2a2 2 0 0 0-3.6 0L8.4 8.4l-4.6.3a2 2 0 0 0-1.1 3.5l3.5 3-1 4.4c-.5 1.7 1.4 3 2.9 2.1l3.9-2.3 3.9 2.3c1.5 1 3.4-.4 3-2.1l-1-4.4 3.4-3a2 2 0 0 0-1.1-3.5l-4.6-.3-1.8-4.2Z" />
+                                </svg>
+                    
+                                <svg class="h-4 w-4 text-yellow-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                    fill="currentColor" viewBox="0 0 24 24">
+                                    <path
+                                        d="M13.8 4.2a2 2 0 0 0-3.6 0L8.4 8.4l-4.6.3a2 2 0 0 0-1.1 3.5l3.5 3-1 4.4c-.5 1.7 1.4 3 2.9 2.1l3.9-2.3 3.9 2.3c1.5 1 3.4-.4 3-2.1l-1-4.4 3.4-3a2 2 0 0 0-1.1-3.5l-4.6-.3-1.8-4.2Z" />
+                                </svg>
+                    
+                                <svg class="h-4 w-4 text-yellow-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                    fill="currentColor" viewBox="0 0 24 24">
+                                    <path
+                                        d="M13.8 4.2a2 2 0 0 0-3.6 0L8.4 8.4l-4.6.3a2 2 0 0 0-1.1 3.5l3.5 3-1 4.4c-.5 1.7 1.4 3 2.9 2.1l3.9-2.3 3.9 2.3c1.5 1 3.4-.4 3-2.1l-1-4.4 3.4-3a2 2 0 0 0-1.1-3.5l-4.6-.3-1.8-4.2Z" />
+                                </svg>
+                    
+                                <svg class="h-4 w-4 text-yellow-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                    fill="currentColor" viewBox="0 0 24 24">
+                                    <path
+                                        d="M13.8 4.2a2 2 0 0 0-3.6 0L8.4 8.4l-4.6.3a2 2 0 0 0-1.1 3.5l3.5 3-1 4.4c-.5 1.7 1.4 3 2.9 2.1l3.9-2.3 3.9 2.3c1.5 1 3.4-.4 3-2.1l-1-4.4 3.4-3a2 2 0 0 0-1.1-3.5l-4.6-.3-1.8-4.2Z" />
+                                </svg>
+                    
+                                <svg class="h-4 w-4 text-yellow-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                    fill="currentColor" viewBox="0 0 24 24">
+                                    <path
+                                        d="M13.8 4.2a2 2 0 0 0-3.6 0L8.4 8.4l-4.6.3a2 2 0 0 0-1.1 3.5l3.5 3-1 4.4c-.5 1.7 1.4 3 2.9 2.1l3.9-2.3 3.9 2.3c1.5 1 3.4-.4 3-2.1l-1-4.4 3.4-3a2 2 0 0 0-1.1-3.5l-4.6-.3-1.8-4.2Z" />
+                                </svg>
+                            </div>
+                    
+                            <!-- rating & total rated -->
+                            <p class="text-sm font-medium text-gray-900">5.0</p>
+                            <p class="text-sm font-medium text-gray-500">(455)</p>
+                        </div>
+                    
+                        <!-- fast delivery & best price -->
+                        <ul class="mt-2 flex items-center gap-4">
+                            <li class="flex items-center gap-2">
+                                <svg class="h-4 w-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                    fill="none" viewBox="0 0 24 24">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M13 7h6l2 4m-8-4v8m0-8V6a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v9h2m8 0H9m4 0h2m4 0h2v-4m0 0h-5m3.5 5.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Zm-10 0a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Z" />
+                                </svg>
+                                <p class="text-sm font-medium text-gray-500">Fast Delivery</p>
+                            </li>
+                    
+                            <li class="flex items-center gap-2">
+                                <svg class="h-4 w-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                    fill="none" viewBox="0 0 24 24">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-width="2"
+                                        d="M8 7V6c0-.6.4-1 1-1h11c.6 0 1 .4 1 1v7c0 .6-.4 1-1 1h-1M3 18v-7c0-.6.4-1 1-1h11c.6 0 1 .4 1 1v7c0 .6-.4 1-1 1H4a1 1 0 0 1-1-1Zm8-3.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z" />
+                                </svg>
+                                <p class="text-sm font-medium text-gray-500">Best Price</p>
+                            </li>
+                        </ul>
                     </div>
-                <% } %>
-            <% }); %>
-        </div>
-    </div>
-
-    <!-- Category Title -->
-    <div class="my-10 pb-2 text-4xl font-bold text-center border-b-4 border-b-sky-900 container mx-auto">
-        <h2>Categories</h2>
-    </div>
-    
-    <!-- Category Cards -->
-    <div class="container mx-auto">
-        <div class="grid grid-cols-2 md:grid-cols-2 gap-4 flex flex-col justify-between flex-1">
-            <% categories.forEach(el => { %>
-                <a href="buyer/categories/<%= el.id %>" class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 hover:scale-105">
-                    <div class="flex flex-col justify-between p-4 leading-normal">
-                        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><%= el.categoryName %></h5>
+                </div>
+                <!-- card footer -->
+                <div class="p-4 border-t border-gray-200 bg-gray-50">
+                    <div class="flex items-center justify-between gap-4">
+                        <!-- product price -->
+                        <p class="text-2xl font-extrabold leading-tight text-gray-900">
+                            <%= rupiahFormat(el.price) %>
+                        </p>
+                        <!-- See product details button -->
+                        <a href="/buyer/buyProduct/<%= el.id %>" class="inline-flex items-center rounded-lg bg-primary-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300">
+                            <svg class="w-6 h-6 text-white -ms-2 me-2 h-5 w-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
+                                height="24" fill="none" viewBox="0 0 24 24">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 12H5m14 0-4 4m4-4-4-4" />
+                            </svg>
+                            Details
+                        </a>
                     </div>
-                </a>
-            <% }); %>
-        </div>
-    </div>    
-
-    
+                </div>
+            </div>
+            <% } %>
+        <% }); %>
+    </div>
 
     <!-- Footer -->
      <%- include('./partials/_footer') %>
